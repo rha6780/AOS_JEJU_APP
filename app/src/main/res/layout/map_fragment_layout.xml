@@ -9,6 +9,40 @@
         android:id="@+id/map_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        />
+        android:layout_above="@id/navigationBar" />
+
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_margin="20dp"
+        android:background="@color/white"
+        android:layout_gravity="top"/>
+
+    <com.naver.maps.map.widget.LocationButtonView
+        android:id="@+id/mapLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_above="@id/mapZoom" />
+
+    <com.naver.maps.map.widget.ZoomControlView
+        android:id="@+id/mapZoom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:layout_above="@id/navigationBar"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true" />
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigationBar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/LightGray"/>
+
 
 </RelativeLayout>
