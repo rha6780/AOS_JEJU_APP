@@ -93,7 +93,7 @@ public class MapViewActivity extends AppCompatActivity implements OnMapReadyCall
     public void onMapReady(NaverMap naverMap) {
         UiSettings uiSettings = naverMap.getUiSettings();
         uiSettings.setZoomControlEnabled(false);
-        uiSettings.setLocationButtonEnabled(true);
+        uiSettings.setLocationButtonEnabled(false);
 
         LocationButtonView locationButton = findViewById(R.id.mapLocation);
         locationButton.setMap(naverMap);

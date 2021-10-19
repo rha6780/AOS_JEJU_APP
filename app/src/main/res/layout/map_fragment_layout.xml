@@ -42,7 +42,43 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/LightGray"/>
+        android:background="@color/LightGray">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <Button
+                android:id="@+id/station_button"
+                android:text="버스 정류소"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/busAI"
+                android:layout_marginRight="15dp"/>
+
+            <Button
+                android:id="@+id/busAI"
+                android:text="예상시간 AI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+
+                 />
+
+            <Button
+                android:id="@+id/add_button"
+                android:text="책갈피"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/busAI"
+                android:layout_marginLeft="15dp"
+                />
+        </RelativeLayout>
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
 </RelativeLayout>
