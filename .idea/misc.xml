@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Apps/AOS_JEJU_APP/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.15092592592592594" />
         <entry key="..\:/Apps/AOS_JEJU_APP/app/src/main/res/drawable/baseline_traffic_24.xml" value="0.2111111111111111" />
+        <entry key="..\:/Apps/AOS_JEJU_APP/app/src/main/res/drawable/ic_launcher_background.xml" value="0.15092592592592594" />
+        <entry key="..\:/Apps/AOS_JEJU_APP/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Apps/AOS_JEJU_APP/app/src/main/res/layout/map_fragment_layout.xml" value="0.22" />
       </map>
     </option>

@@ -9,8 +9,7 @@
     <com.naver.maps.map.MapView
         android:id="@+id/map_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/navigationBar" />
+        android:layout_height="match_parent" />
 
 
     <com.naver.maps.map.widget.LocationButtonView
@@ -20,60 +19,61 @@
         android:layout_margin="10dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_above="@id/mapZoom" />
+        android:layout_below="@id/mapZoom" />
 
     <com.naver.maps.map.widget.ZoomControlView
         android:id="@+id/mapZoom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
-        android:layout_above="@id/navigationBar"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true" />
 
+    <RelativeLayout
+        android:id="@+id/contentslayout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="10dp"
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_above="@id/navigationBar"/>
+
+    <RelativeLayout
         android:id="@+id/navigationBar"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/LightGray">
+        android:layout_marginBottom="10dp"
+        android:background="@color/Transparency"
+        android:outlineAmbientShadowColor="@color/Transparency">
 
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:padding="10dp">
+        <Button
+            android:id="@+id/station_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_toLeftOf="@id/busAI"
+            android:text="버스 정류소" />
 
-            <Button
-                android:id="@+id/station_button"
-                android:text="버스 정류소"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toLeftOf="@id/busAI"
-                android:layout_marginRight="15dp"/>
+        <Button
+            android:id="@+id/busAI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="예상시간 AI"
 
-            <Button
-                android:id="@+id/busAI"
-                android:text="예상시간 AI"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
+            />
 
-                 />
+        <Button
+            android:id="@+id/add_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/busAI"
+            android:text="책갈피" />
 
-            <Button
-                android:id="@+id/add_button"
-                android:text="책갈피"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/busAI"
-                android:layout_marginLeft="15dp"
-                />
-        </RelativeLayout>
 
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+    </RelativeLayout>
 
 
 

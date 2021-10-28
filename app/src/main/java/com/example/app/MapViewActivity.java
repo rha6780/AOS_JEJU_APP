@@ -1,8 +1,12 @@
 package com.example.app;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,14 +37,15 @@ public class MapViewActivity extends AppCompatActivity implements OnMapReadyCall
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
 
-        Button button1 = (Button) findViewById(R.id.button1);
-        Button button2 = (Button) findViewById(R.id.button2);
-        Button button3 = (Button) findViewById(R.id.button3);
-        Button button4 = (Button) findViewById(R.id.button4);
+        Button button1 = (Button) findViewById(R.id.station_button);
+        Button button2 = (Button) findViewById(R.id.busAI);
+        Button button3 = (Button) findViewById(R.id.add_button);
+        RelativeLayout contentslayout = (RelativeLayout) findViewById(R.id.contentslayout);
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int a = contentslayout.getVisibility();
 
             }
         });

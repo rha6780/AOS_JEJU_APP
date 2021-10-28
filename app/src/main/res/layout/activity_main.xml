@@ -4,12 +4,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-    <Button
-        android:id="@+id/mapButton"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:text="버튼"/>
+        android:gravity="center_horizontal"
+        android:padding="20dp"
+        >
+
+        <Button
+            android:id="@+id/mapButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="100dp"
+            android:height="100dp"
+            android:text="지도 + 버스" />
+
+        <Button
+            android:id="@+id/timelineButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:width="100dp"
+            android:height="100dp"
+            android:text="스케줄" />
+
+    </LinearLayout>
 
 </RelativeLayout>
