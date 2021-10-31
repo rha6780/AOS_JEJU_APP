@@ -41,11 +41,17 @@ public class MapViewActivity extends AppCompatActivity implements OnMapReadyCall
         Button button2 = (Button) findViewById(R.id.busAI);
         Button button3 = (Button) findViewById(R.id.add_button);
         RelativeLayout contentslayout = (RelativeLayout) findViewById(R.id.contentslayout);
+        contentslayout.setVisibility(View.INVISIBLE);
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int a = contentslayout.getVisibility();
+                if (contentslayout.getVisibility() == View.VISIBLE) {
+                    contentslayout.setVisibility(View.INVISIBLE);
+                }
+                else {
+                    contentslayout.setVisibility(View.VISIBLE);
+                }
 
             }
         });
