@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Layout;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.naver.maps.map.LocationTrackingMode;
 import com.naver.maps.map.MapView;
@@ -19,6 +21,8 @@ import com.naver.maps.map.UiSettings;
 import com.naver.maps.map.util.FusedLocationSource;
 import com.naver.maps.map.widget.LocationButtonView;
 import com.naver.maps.map.widget.ZoomControlView;
+
+import java.util.ArrayList;
 
 public class MapViewActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -40,8 +44,14 @@ public class MapViewActivity extends AppCompatActivity implements OnMapReadyCall
         Button button1 = (Button) findViewById(R.id.station_button);
         Button button2 = (Button) findViewById(R.id.busAI);
         Button button3 = (Button) findViewById(R.id.add_button);
-        RelativeLayout contentslayout = (RelativeLayout) findViewById(R.id.contentslayout);
+        RelativeLayout contentslayout = (RelativeLayout) findViewById(R.id.contents_layout);
         contentslayout.setVisibility(View.INVISIBLE);
+
+        ArrayList<StationItem> arr = new ArrayList<StationItem>();
+        arr.add(new StationItem("fine", 0));
+        StationListAdapter adapter = new StationListAdapter(this, R.layout.stationitem, arr);
+        RecyclerView station_list = (RecyclerView) findViewById(R.id.station_list);
+        station_list.setAdapter(adapter);
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
