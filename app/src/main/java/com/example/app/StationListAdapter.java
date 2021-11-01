@@ -64,16 +64,17 @@ public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.
     @Override
     public StationListAdapter.StationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.stationitem, parent, false);
-        StationViewHolder viewHolder = new StationViewHolder(view);
+        StationListAdapter.StationViewHolder viewHolder = new StationListAdapter.StationViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StationViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull StationListAdapter.StationViewHolder holder, int position) {
         StationItem data = item_list.get(position);
 
         //데이터 결합
         holder.nameText.setText(data.getName());
+        holder.idText.setText(data.getId()+"");
     }
 
     @Override
@@ -89,11 +90,12 @@ public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.
     class StationViewHolder extends RecyclerView.ViewHolder {
 
         TextView nameText;
-        TextView id;
+        TextView idText;
 
         public StationViewHolder(@NonNull View itemView) {
             super(itemView);
             nameText = (TextView) itemView.findViewById(R.id.station_name);
+            idText = (TextView) itemView.findViewById(R.id.station_id);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.naver.maps.map.LocationTrackingMode;
@@ -52,6 +53,7 @@ public class MapViewActivity extends AppCompatActivity implements OnMapReadyCall
         ArrayList<StationItem> arr = new ArrayList<StationItem>();
         arr.add(new StationItem("fine", 0));
         StationListAdapter adapter = new StationListAdapter(this, R.layout.stationitem, arr);
+        station_list.setLayoutManager(new LinearLayoutManager(this));
         station_list.setAdapter(adapter);
 
         button1.setOnClickListener(new View.OnClickListener() {
