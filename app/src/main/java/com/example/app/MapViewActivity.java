@@ -42,9 +42,9 @@ public class MapViewActivity extends AppCompatActivity implements OnMapReadyCall
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
 
-        Button button1 = (Button) findViewById(R.id.station_button);
-        Button button2 = (Button) findViewById(R.id.busAI);
-        Button button3 = (Button) findViewById(R.id.add_button);
+        Button stationBnt= (Button) findViewById(R.id.station_button);
+        Button busBnt = (Button) findViewById(R.id.busAI);
+        Button addBnt = (Button) findViewById(R.id.add_button);
         RelativeLayout contentslayout = (RelativeLayout) findViewById(R.id.contents_layout);
         contentslayout.setVisibility(View.INVISIBLE);
         RecyclerView station_list = (RecyclerView) findViewById(R.id.station_list);
@@ -56,7 +56,33 @@ public class MapViewActivity extends AppCompatActivity implements OnMapReadyCall
         station_list.setLayoutManager(new LinearLayoutManager(this));
         station_list.setAdapter(adapter);
 
-        button1.setOnClickListener(new View.OnClickListener() {
+        stationBnt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (contentslayout.getVisibility() == View.VISIBLE) {
+                    contentslayout.setVisibility(View.INVISIBLE);
+                }
+                else {
+                    contentslayout.setVisibility(View.VISIBLE);
+                }
+
+            }
+        });
+
+        busBnt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (contentslayout.getVisibility() == View.VISIBLE) {
+                    contentslayout.setVisibility(View.INVISIBLE);
+                }
+                else {
+                    contentslayout.setVisibility(View.VISIBLE);
+                }
+
+            }
+        });
+
+        addBnt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (contentslayout.getVisibility() == View.VISIBLE) {
