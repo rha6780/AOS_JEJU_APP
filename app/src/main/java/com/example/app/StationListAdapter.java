@@ -35,20 +35,14 @@ public class StationListAdapter extends RecyclerView.Adapter {
     public StationListAdapter(Context context, int alayout, ArrayList<StationItem> arr){
         mcontext = context;
         layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE );
-        arr = itemlist;
+        itemlist = arr;
         layout = alayout;
     }
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        final int post = i;
-        if (view == null) {
-            view = layoutInflater.inflate(layout, parent, false);
-        }
-        TextView textView = (TextView) view.findViewById(R.id.stationname);
 
-        return view;
         return null;
     }
 
@@ -67,14 +61,5 @@ public class StationListAdapter extends RecyclerView.Adapter {
         return 0;
     }
 
-    @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        final int post = i;
-        if (view == null) {
-            view = layoutInflater.inflate(layout, viewGroup, false);
-        }
-        TextView textView = (TextView) view.findViewById(R.id.stationname);
 
-        return view;
-    }
 }
