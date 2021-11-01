@@ -89,6 +89,7 @@ public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.
     class StationViewHolder extends RecyclerView.ViewHolder {
 
         TextView nameText;
+        TextView id;
 
         public StationViewHolder(@NonNull View itemView) {
             super(itemView);
