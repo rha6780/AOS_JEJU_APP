@@ -50,19 +50,19 @@ class StationItem {
 public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.StationViewHolder> {
     Context mcontext;
     LayoutInflater layoutInflater;
-    ArrayList<StationItem> itemlist;
+    ArrayList<StationItem> item_list;
     int layout;
 
     public StationListAdapter(Context context, int alayout, ArrayList<StationItem> arr){
         mcontext = context;
         layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE );
-        itemlist = arr;
+        item_list = arr;
         layout = alayout;
     }
 
     @NonNull
     @Override
-    public StationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public StationListAdapter.StationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.stationitem, parent, false);
         StationViewHolder viewHolder = new StationViewHolder(view);
         return viewHolder;
@@ -70,7 +70,7 @@ public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull StationViewHolder holder, int position) {
-        StationItem data = itemlist.get(position);
+        StationItem data = item_list.get(position);
 
         //데이터 결합
         holder.nameText.setText(data.getName());
@@ -78,12 +78,12 @@ public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.
 
     @Override
     public long getItemId(int i) {
-        return itemlist.get(i).id;
+        return item_list.get(i).id;
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return item_list.size();
     }
 
     class StationViewHolder extends RecyclerView.ViewHolder {
@@ -93,7 +93,7 @@ public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.
 
         public StationViewHolder(@NonNull View itemView) {
             super(itemView);
-            nameText = (TextView) itemView.findViewById(R.id.stationname);
+            nameText = (TextView) itemView.findViewById(R.id.station_name);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

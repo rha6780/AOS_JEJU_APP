@@ -46,11 +46,12 @@ public class MapViewActivity extends AppCompatActivity implements OnMapReadyCall
         Button button3 = (Button) findViewById(R.id.add_button);
         RelativeLayout contentslayout = (RelativeLayout) findViewById(R.id.contents_layout);
         contentslayout.setVisibility(View.INVISIBLE);
+        RecyclerView station_list = (RecyclerView) findViewById(R.id.station_list);
+
 
         ArrayList<StationItem> arr = new ArrayList<StationItem>();
         arr.add(new StationItem("fine", 0));
         StationListAdapter adapter = new StationListAdapter(this, R.layout.stationitem, arr);
-        RecyclerView station_list = (RecyclerView) findViewById(R.id.station_list);
         station_list.setAdapter(adapter);
 
         button1.setOnClickListener(new View.OnClickListener() {
