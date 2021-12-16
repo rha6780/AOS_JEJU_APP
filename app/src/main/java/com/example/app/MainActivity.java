@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity{
         timelineButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(MainActivity.this, MapViewActivity.class);
+                Intent intent1 = new Intent(MainActivity.this, TimelineActivity.class);
                 startActivity(intent1);
             }
         });
