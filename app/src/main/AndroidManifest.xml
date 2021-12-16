@@ -27,6 +27,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MapViewActivity"/>
+        <activity android:name=".TimelineActivity"/>
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="wt8w6zt8yk"/>

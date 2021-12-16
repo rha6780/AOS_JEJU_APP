@@ -67,6 +67,8 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="15dp"
             android:layout_toLeftOf="@id/busAI"
+            android:textColor="@color/white"
+            android:background="@color/Button_color"
             android:text="버스 정류소" />
 
         <Button
@@ -74,6 +76,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:background="@color/Button_color"
             android:text="예상시간 AI"
 
             />
@@ -84,6 +88,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_toRightOf="@+id/busAI"
+            android:textColor="@color/white"
+            android:background="@color/Button_color"
             android:text="책갈피" />
 
 

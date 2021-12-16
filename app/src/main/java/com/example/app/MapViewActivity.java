@@ -47,11 +47,15 @@ public class MapViewActivity extends AppCompatActivity implements OnMapReadyCall
         Button addBnt = (Button) findViewById(R.id.add_button);
         RelativeLayout contentslayout = (RelativeLayout) findViewById(R.id.contents_layout);
         contentslayout.setVisibility(View.INVISIBLE);
+
+
+        //아이템 가져오
         RecyclerView station_list = (RecyclerView) findViewById(R.id.station_list);
-
-
         ArrayList<StationItem> arr = new ArrayList<StationItem>();
-        arr.add(new StationItem("fine", 0));
+
+
+        arr.add(new StationItem("제주대학교", 33829340));
+        
         StationListAdapter adapter = new StationListAdapter(this, R.layout.stationitem, arr);
         station_list.setLayoutManager(new LinearLayoutManager(this));
         station_list.setAdapter(adapter);
@@ -64,6 +68,7 @@ public class MapViewActivity extends AppCompatActivity implements OnMapReadyCall
                 }
                 else {
                     contentslayout.setVisibility(View.VISIBLE);
+
                 }
 
             }

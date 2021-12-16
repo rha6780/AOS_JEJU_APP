@@ -31,6 +31,14 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
+        Button timelineButton = (Button) findViewById(R.id.timelineButton);
+        timelineButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(MainActivity.this, MapViewActivity.class);
+                startActivity(intent1);
+            }
+        });
 
     }
 

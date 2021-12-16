@@ -11,4 +11,5 @@
     <!--custom : rha6780-->
     <color name="Transparency">#00FF0000</color>
     <color name="LightGray">#F09D9C9C</color>
+    <color name="Button_color">#82C6D8</color>
 </resources>
