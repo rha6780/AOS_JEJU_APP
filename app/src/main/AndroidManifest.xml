@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/BasicTheme"
         android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
-        tools:replace="android:appComponentFactory">
+        tools:replace="android:appComponentFactory"
+        android:usesCleartextTraffic="true">
 
         <activity android:name=".MainActivity">
             <intent-filter>
