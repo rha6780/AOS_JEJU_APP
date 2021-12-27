@@ -1,12 +1,13 @@
 package com.example.app;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
+import android.location.GpsStatus;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
-import android.text.Layout;
+import android.telephony.CarrierConfigManager;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
@@ -16,24 +17,20 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.location.LocationResult;
-import com.google.gson.JsonObject;
-import com.naver.maps.geometry.LatLng;
 import com.naver.maps.map.LocationTrackingMode;
 import com.naver.maps.map.MapView;
 import com.naver.maps.map.NaverMap;
 import com.naver.maps.map.OnMapReadyCallback;
 import com.naver.maps.map.UiSettings;
-import com.naver.maps.map.overlay.Marker;
 import com.naver.maps.map.util.FusedLocationSource;
 import com.naver.maps.map.widget.LocationButtonView;
 import com.naver.maps.map.widget.ZoomControlView;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class MapViewActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -41,6 +38,9 @@ public class MapViewActivity extends AppCompatActivity implements OnMapReadyCall
     private NaverMap naverMap;
     private MapView mapView;
     private FusedLocationSource locationSource;
+    private double longitude = 126.54777;
+    private double latitude = 33.46916;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,48 +58,10 @@ public class MapViewActivity extends AppCompatActivity implements OnMapReadyCall
         RelativeLayout contentslayout = (RelativeLayout) findViewById(R.id.contents_layout);
         contentslayout.setVisibility(View.INVISIBLE);
 
-        double longitude =  126.561228;
-        double latitude = 33.459241;
-
-        Marker marker = new Marker();
-        marker.setPosition(new LatLng(latitude, longitude));
-        marker.setMap(naverMap);
 
         //아이템 가져오기
         RecyclerView station_list = (RecyclerView) findViewById(R.id.station_list);
         ArrayList<StationItem> arr = new ArrayList<StationItem>();
-
-        String resultstr = "[Null]";
-        System.out.println("구분선 === ");
-        try {
-            resultstr = new CallAPI().execute().get();
-            JSONObject jsonObject = null;
-            JSONArray jsonArray = null;
-            jsonArray = new JSONArray(resultstr);
-
-            Log.d("check : ", String.valueOf(jsonArray.get(1)));
-
-            if (jsonArray!=null) {
-                for(int i=0; i<jsonArray.length(); i++) {
-                    JSONObject jsonObject1 = null;
-                    jsonObject1 = jsonArray.getJSONObject(i);
-                    double lon1 = Double.parseDouble(jsonObject1.get("longitude").toString());
-                    double lat1 = Double.parseDouble(jsonObject1.get("latitude").toString());
-
-                    if(Math.abs(longitude-lon1)<=0.002 && Math.abs(latitude-lat1)<=0.002) {
-                        Log.d("check:", Math.abs(longitude-lon1)+"/"+lon1+" "+Math.abs(latitude-lat1)+"/"+lat1);
-                        arr.add(new StationItem(jsonObject1.get("stationname").toString(), Integer.parseInt(jsonObject1.get("stationid").toString())));
-                    }
-
-                }
-            }
-
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
         
         StationListAdapter adapter = new StationListAdapter(this, R.layout.stationitem, arr);
         station_list.setLayoutManager(new LinearLayoutManager(this));
@@ -110,9 +72,47 @@ public class MapViewActivity extends AppCompatActivity implements OnMapReadyCall
             public void onClick(View view) {
                 if (contentslayout.getVisibility() == View.VISIBLE) {
                     contentslayout.setVisibility(View.INVISIBLE);
+
                 }
                 else {
                     contentslayout.setVisibility(View.VISIBLE);
+                    String resultstr = "[Null]";
+                    System.out.println("구분선 === ");
+
+                    Location loc = locationSource.getLastLocation();
+                    if ( loc != null ) {
+                        longitude = loc.getLongitude();
+                        latitude = loc.getLatitude();
+                    }
+                    Log.d("location : ", longitude +" "+ latitude);
+
+                    try {
+                        resultstr = new CallAPI().execute().get();
+                        JSONObject jsonObject = null;
+                        JSONArray jsonArray = null;
+                        jsonArray = new JSONArray(resultstr);
+
+                        Log.d("check : ", String.valueOf(jsonArray.get(1)));
+
+                        if (jsonArray!=null) {
+                            int count =0;
+                            for(int i=0; i<jsonArray.length(); i++) {
+                                JSONObject jsonObject1 = null;
+                                jsonObject1 = jsonArray.getJSONObject(i);
+                                double lon1 = Double.parseDouble(jsonObject1.get("longitude").toString());
+                                double lat1 = Double.parseDouble(jsonObject1.get("latitude").toString());
+
+                                if(Math.abs(longitude -lon1)<=0.5 && Math.abs(latitude -lat1)<=0.5 && count<10) {
+                                    Log.d("check:", Math.abs(longitude -lon1)+"/"+lon1+" "+Math.abs(latitude -lat1)+"/"+lat1);
+                                    arr.add(new StationItem(jsonObject1.get("stationname").toString(), Integer.parseInt(jsonObject1.get("stationid").toString())));
+                                    count ++;
+                                }
+
+                            }
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
 
                 }
 
