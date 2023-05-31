@@ -92,6 +92,7 @@ public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.
         TextView nameText;
         TextView idText;
 
+
         public StationViewHolder(@NonNull View itemView) {
             super(itemView);
             nameText = (TextView) itemView.findViewById(R.id.station_name);
@@ -99,7 +100,7 @@ public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //아이템 터치 시 동작
+                    //아이템 터치 시 동작 상위 뷰에서 콘텐츠 변환
                 }
             });
 

@@ -62,10 +62,8 @@ public class MapViewActivity extends AppCompatActivity implements OnMapReadyCall
         //아이템 가져오기
         RecyclerView station_list = (RecyclerView) findViewById(R.id.station_list);
         ArrayList<StationItem> arr = new ArrayList<StationItem>();
-        
-        StationListAdapter adapter = new StationListAdapter(this, R.layout.stationitem, arr);
-        station_list.setLayoutManager(new LinearLayoutManager(this));
-        station_list.setAdapter(adapter);
+
+
 
         stationBnt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,8 +99,8 @@ public class MapViewActivity extends AppCompatActivity implements OnMapReadyCall
                                 jsonObject1 = jsonArray.getJSONObject(i);
                                 double lon1 = Double.parseDouble(jsonObject1.get("longitude").toString());
                                 double lat1 = Double.parseDouble(jsonObject1.get("latitude").toString());
-
-                                if(Math.abs(longitude -lon1)<=0.5 && Math.abs(latitude -lat1)<=0.5 && count<10) {
+                                Log.d("check : ", lon1+" "+lat1);
+                                if(Math.abs(longitude -lon1)<=0.005 && Math.abs(latitude -lat1)<=0.005 && count<10) {
                                     Log.d("check:", Math.abs(longitude -lon1)+"/"+lon1+" "+Math.abs(latitude -lat1)+"/"+lat1);
                                     arr.add(new StationItem(jsonObject1.get("stationname").toString(), Integer.parseInt(jsonObject1.get("stationid").toString())));
                                     count ++;
@@ -110,10 +108,15 @@ public class MapViewActivity extends AppCompatActivity implements OnMapReadyCall
 
                             }
                         }
+
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
 
+                    StationListAdapter adapter = new StationListAdapter(mapView.getContext(), R.layout.stationitem, arr);
+                    station_list.setLayoutManager(new LinearLayoutManager(mapView.getContext()));
+                    station_list.setAdapter(adapter);
                 }
 
             }
